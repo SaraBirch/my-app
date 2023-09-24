@@ -1,20 +1,56 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import * as React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import Ionicons from "react-native-vector-icons/Ionicons";
 
-export default function App() {
+import HomeScreen from "./views/HomeScreen";
+import ProfilScreen from "./views/DinProfil";
+import StackNavigator from "./views/StackNavigator";
+
+const Tab = createBottomTabNavigator();
+const homeText = "Velkommen til din profil";
+const profilText = "Venligst, Log ind";
+
+function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Tab.Navigator
+        screenOptions={({ route }) => ({
+          tabBarActiveTintColor: "blue",
+          tabBarInactiveTintColor: "gray",
+          tabBarStyle: [
+            {
+              display: "flex",
+            },
+            null,
+          ],
+          tabBarIcon: ({ color, size }) => {
+            if (route.name === "Home") {
+              return (
+                <Ionicons name={"home-outline"} size={size} color={color} />
+              );
+            } else if (route.name === "Profil") {
+              return (
+                <Ionicons name="person-outline" size={size} color={color} />
+              );
+            } else {
+              return <Ionicons name="boat-outline" size={size} color={color} />;
+            }
+          },
+        })}
+      >
+        <Tab.Screen
+          name="Profil"
+          children={() => <ProfilScreen prop={profilText} />}
+        />
+        <Tab.Screen
+          name="Home"
+          children={() => <HomeScreen prop={homeText} />}
+        />
+        <Tab.Screen name="Boat" component={StackNavigator} />
+      </Tab.Navigator>
+    </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
