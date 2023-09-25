@@ -8,7 +8,7 @@ import ProfilScreen from "./views/DinProfil";
 import StackNavigator from "./views/StackNavigator";
 
 const Tab = createBottomTabNavigator();
-const homeText = "Velkommen til din profil";
+const homeText = "Din profil";
 const profilText = "Venligst, Log ind";
 
 function App() {
@@ -39,6 +39,7 @@ function App() {
           },
         })}
       >
+  
         <Tab.Screen
           name="Profil"
           children={() => <ProfilScreen prop={profilText} />}

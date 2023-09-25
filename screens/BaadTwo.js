@@ -5,6 +5,7 @@ function BaadTwo({navigation}) {
     return (
         <View style={styles.container}>
             <Text style={styles.text}>Dette er Båd 2</Text>
+            <Text style={styles.text}>En Bavaria Crusier 39</Text>
             <View style={{display: 'flex', justifyContent: 'space-evenly', flexDirection: 'colum'}}>
                 <View style={{margin: '2%'}} >
                     <Button title="Båd 1" onPress={() => navigation.navigate('BaadOne')}  />

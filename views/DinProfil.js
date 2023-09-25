@@ -1,4 +1,4 @@
-import {StyleSheet, Text, View, FlatList} from "react-native";
+import {StyleSheet, Text, View, FlatList, SafeAreaView, TextInput} from "react-native";
 import React, { useEffect, useState } from 'react';
 
 function getData() {
@@ -37,14 +37,34 @@ function ProfilScreen({prop}) {
     return (
         <View style={styles.container}>
             <Text style={styles.text}>{prop}</Text>
+            {LogIn()}
             {getData()}
         </View>
     );
 }
 
-export default ProfilScreen
+const LogIn = () => {
+  const [text, onChangeText] = React.useState('Brugernavn');
+  const [text1, onChangeText1] = React.useState('Kode'); 
+  return (
+    <SafeAreaView>
+      <TextInput
+        style={styles.input}
+        onChangeText={onChangeText}
+        value={text}
+      />
+       <TextInput
+        style={styles.input}
+        onChangeText={onChangeText1}r
+        value={text1}
+      />
+    </SafeAreaView>
+  );
+};
 
-//Lokal styling til brug i SettingsScreen
+export default ProfilScreen; LogIn
+
+
 const styles = StyleSheet.create({
     container: {
         paddingTop:100,
@@ -52,7 +72,6 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: 'white',
         height:'100%'
     },
     text: {
