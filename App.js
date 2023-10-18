@@ -3,15 +3,19 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Ionicons from "react-native-vector-icons/Ionicons";
 
+
 import HomeScreen from "./views/HomeScreen";
-import ProfilScreen from "./views/DinProfil";
+import ProfilScreen from "./views/Login";
 import StackNavigator from "./views/StackNavigator";
+import BoatPost from "./views/BoatPost"
 
 const Tab = createBottomTabNavigator();
-const homeText = "Din profil";
-const profilText = "Venligst, Log ind";
+const homeText = "Din Profil";
+const header = "BOAT";
+const header2 = 'Best of All time';
 
-function App() {
+
+function Navi() {
   return (
     <NavigationContainer>
       <Tab.Navigator
@@ -42,11 +46,15 @@ function App() {
   
         <Tab.Screen
           name="Profil"
-          children={() => <ProfilScreen prop={profilText} />}
+          children={() => <ProfilScreen prop={header} />}
         />
         <Tab.Screen
           name="Home"
           children={() => <HomeScreen prop={homeText} />}
+        />
+        <Tab.Screen
+          name="BoatPost"
+          children={() => <BoatPost prop={header} />}
         />
         <Tab.Screen name="Boat" component={StackNavigator} />
       </Tab.Navigator>
@@ -54,4 +62,6 @@ function App() {
   );
 }
 
-export default App;
+export default Navi; 
+
+

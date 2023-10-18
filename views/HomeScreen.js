@@ -1,79 +1,74 @@
-import { StyleSheet, Text, View, TextInput, SafeAreaView } from "react-native";
+import { StyleSheet, Text, View, TextInput, SafeAreaView, Button,} from "react-native";
 import * as React from "react";
+import { globalStyles } from "../GlobalStyles/GlobalStyles.js";
 
 // HomeScreen komponenten tager en prop med og printer indholdet af denne i en <Text/>
-function HomeScreen({ prop }) {
+const HomeScreen = ({ prop }) => {
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>{prop}</Text>
+    <View style={globalStyles.container}>
+      <Text style={globalStyles.header}>{prop}</Text>
       <Profilbeskrivelse />
+      <View style={globalStyles.button}>
+      <Button title='Opret Post' onpress={() => {}}/>
+      </View>
     </View>
   );
-}
+};
+   
 
 const Profilbeskrivelse = () => {
-  const [text, onChangeText] = React.useState('John Doe');
-  const [text1, onChangeText1] = React.useState('46 år');
-  const [text2, onChangeText2] = React.useState('Mælkevejen 23');
-  const [text3, onChangeText3] = React.useState('Helsingørhavn');
-  const [text4, onChangeText4] = React.useState('Bavaria Crusier 42');
-  const [number, onChangeNumber] = React.useState('+45 12345678');
+const [text, onChangeText] = React.useState('John Doe');
+const [text1, onChangeText1] = React.useState('46 år');
+const [text2, onChangeText2] = React.useState('Mælkevejen 23');
+const [text3, onChangeText3] = React.useState('Helsingørhavn');
+const [text4, onChangeText4] = React.useState('Bavaria Crusier 42');
+const [number, onChangeNumber] = React.useState('+45 12345678');
 
-  return (
-    <SafeAreaView>
+  
+return (
+    <SafeAreaView style={globalStyles.safeArea}>
       <TextInput
-        style={styles.input}
+        style={globalStyles.borderStyle}
         onChangeText={onChangeText}
         value={text}
+        placeholder="Name"
       />
-       <TextInput
-        style={styles.input}
-        onChangeText={onChangeText1}r
+      <TextInput
+        style={globalStyles.borderStyle}
+        onChangeText={onChangeText1}
         value={text1}
+        placeholder="Age"
       />
       <TextInput
-        style={styles.input}
-        onChangeText={onChangeText2}r
+        style={globalStyles.borderStyle}
+        onChangeText={onChangeText2}
         value={text2}
+        placeholder="Address"
       />
+
       <TextInput
-        style={styles.input}
-        onChangeText={onChangeText3}r
+        style={globalStyles.borderStyle}
+        onChangeText={onChangeText3}
         value={text3}
+        placeholder="City"
       />
       <TextInput
-        style={styles.input}
-        onChangeText={onChangeText4}r
+        style={globalStyles.borderStyle}
+        onChangeText={onChangeText4}
         value={text4}
+        placeholder="Boat Model"
       />
       <TextInput
-        style={styles.input}
+        style={globalStyles.borderStyle}
         onChangeText={onChangeNumber}
         value={number}
-        placeholder="useless placeholder"
+        placeholder="Phone Number"
         keyboardType="numeric"
       />
     </SafeAreaView>
   );
 };
 
-export default HomeScreen; Profilbeskrivelse
+export default HomeScreen; 
+Profilbeskrivelse;
 
-// Lokal styling til brug i HomeScreen
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'white',
-  },
-  text: {
-    fontSize: 20,
-  },
-  input: {
-    height: 40,
-    margin: 12,
-    borderWidth: 1,
-    padding: 10,
-  },
-});

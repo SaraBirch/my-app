@@ -1,13 +1,14 @@
 import {Button, StyleSheet, Text, View} from "react-native";
 import * as React from "react";
+import { globalStyles } from "../GlobalStyles/GlobalStyles.js";
 
 function BaadOne({ navigation}) {
     return (
-        <View style={styles.container}>
-            <Text style={styles.text}>Dette er Båd 1</Text>
-            <Text style={styles.text}>En Bavaria Yatch 43</Text>
+        <View style={globalStyles.container}>
+            <Text style={globalStyles.title}>Dette er Båd 1</Text>
+            <Text style={globalStyles.title}>En Bavaria Yatch 43</Text>
             <View style={{display: 'flex', justifyContent: 'space-evenly', flexDirection: 'coluem'}}>
-            <View style={{margin: '2%'}} >
+            <View style={globalStyles.button} >
                     <Button title="Båd 2" backgroundColor="red" onPress={() => navigation.navigate('BaadTwo')}  />
                 </View>
                 <View style={{margin: '2%'}} >
@@ -23,12 +24,7 @@ export default BaadOne
 
 //Lokal styling til brug i ScreenOne
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: 'white',
-    },
+ 
     text: {
         fontSize: 20,
     },
