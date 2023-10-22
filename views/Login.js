@@ -1,51 +1,43 @@
-import { StyleSheet, Text, View, SafeAreaView, Button, TextInput, Image,} from "react-native";
+import {Text, View, SafeAreaView, Button, TextInput,} from "react-native";
 import React, { useState } from "react";
-import { firebase, auth } from "../Firebase";
+import { auth } from "../Firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { globalStyles } from "../GlobalStyles/GlobalStyles.js";
 
-function ProfilScreen({ prop }) {
+function LoginScreen({ onLogin }) {
   // This component renders the Profile Screen, which includes a LogIn component.
   // The prop prop is used to pass a message to the LogIn component.
-
   return (
     <View style={globalStyles.container}>
-      <Text style={globalStyles.header}>{prop}</Text>
-      <Text style={globalStyles.header2}>{prop}</Text>
-      {/* <Image
-       style={styles.image}
-        source={require('./image.png')}
-        /> */}
-      {LogIn()}
+      <Text style={globalStyles.header}>{}</Text>
+      <Text style={globalStyles.header2}>{}</Text>
+      {LogIn(onLogin)}
     </View>
   );
 }
 
-const LogIn = () => {
-  // This component renders a login form.
-
+// log ind function 
+const LogIn = (onLogin) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  // This function handles the login process.
+  // this is the function than handles the login process
   const handleLogin = async () => {
     try {
-      // Sign in the user with their email and password.
       const user = await signInWithEmailAndPassword(auth, email, password);
-
-      // If the login was successful, redirect the user to the home page.
-      if (user) {
-        console.log(user.user.email);
+      if (auth) {   // if successfully signed in, redirect the new user to the home page
         console.log("ok");
+        onLogin();
       }
+    // Catch any errors that occur during the sign-in process
     } catch (error) {
-      // If the login failed, log the error to the console.
       console.log(error);
     }
   };
-
+  // Return the UI of the Login component
   return (
     <SafeAreaView>
+      <Text style={globalStyles.header}>B.O.A.T</Text>
       <TextInput
         style={globalStyles.borderStyle}
         onChangeText={(text) => setEmail(text)}
@@ -56,10 +48,13 @@ const LogIn = () => {
         onChangeText={(text) => setPassword(text)}
         secureTextEntry
       />
-      <Button title="Log In" onPress={handleLogin} />
+      <View style={globalStyles.button}>
+        <Button title="Log In" onPress={handleLogin} />
+      </View>
+      
     </SafeAreaView>
   );
 };
 
-export default ProfilScreen;
+export default LoginScreen;
 LogIn;

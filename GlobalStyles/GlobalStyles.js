@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 
-
+// Global styling sheet 
 export const globalStyles = StyleSheet.create({
     container: {
       paddingTop: 100,
@@ -13,14 +13,9 @@ export const globalStyles = StyleSheet.create({
     header: {
       fontSize: 40,
       color: '#77C3EC',
+      marginBottom: 10,
       
-    },
-    header2: {
-        fontSize: 50,
-        color: '#000000',
-        
-      },
-    
+    },    
     title: {
       fontSize: 18,
       fontWeight: "bold",
@@ -34,6 +29,7 @@ export const globalStyles = StyleSheet.create({
       height: 50, 
       width: 250, 
       padding: 10, 
+      marginBottom: 10,
     },
 
     safeArea: {
@@ -42,12 +38,23 @@ export const globalStyles = StyleSheet.create({
 
     button: {
      backgroundColor: '#ADD8E6',
-     padding: 10, 
+     padding: 1, 
      borderRadius: 5,
      height: 50, 
      width: 250, 
-     padding: 10,  
+     padding: 5,
+     marginBottom: 10, 
         
       },
+
+    List: {
+      lex: 1,
+      padding: 25,
+      marginTop: 20,
+      borderRadius: 5,
+      borderWidth: 1,
+      width: 250,
+      borderColor: "#ADD8E6"
+    },
     
   });
